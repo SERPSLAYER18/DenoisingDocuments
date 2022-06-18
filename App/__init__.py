@@ -1,16 +1,22 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_sqlalchemy import SQLAlchemy
 
 # init SQLAlchemy so we can use it later in our models
 db = SQLAlchemy()
-
+# handler = RotatingFileHandler('app.log', maxBytes=100000, backupCount=3)
+# logger = logging.getLogger('tdm')
+# logger.setLevel(logging.ERROR)
+# logger.addHandler(handler)
 
 def create_app():
     app = Flask(__name__)
 
     app.config['SECRET_KEY'] = 'secret-key-goes-here'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost:13306/dirty_documents'
+    #app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost:13306/dirty_documents'
+    #app.config['SQLALCHEMY_DATABASE_URI'] = 'jdbc:postgresql://localhost:5432/dirty_documents'
+    #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost:5432/dirty_documents'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@postgres:5432/dirty_documents'
 
     db.init_app(app)
 
