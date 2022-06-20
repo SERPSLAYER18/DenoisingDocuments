@@ -15,8 +15,9 @@ RUN pip3 install -r requirements.txt
 #RUN apt-get install mysql-client
 #RUN apt-get install python-mysqldb -y
 RUN pip3 install psycopg2-binary
+EXPOSE 5000
 
-COPY . .
+COPY .. .
 
 ENV FLASK_APP=App/__init__.py
 ENV FLASK_ENV=development

@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  flask_container :
+    build: ./flask_container/
+    ports:
+      - "5000:5000"
+  database_container:
+    build: ./database_container/

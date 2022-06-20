@@ -1,7 +1,7 @@
-from flask import Flask, current_app
+from flask import Flask
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
-from App.NN import load_model
+from .NN import load_model
 
 # init SQLAlchemy
 db = SQLAlchemy()
@@ -15,8 +15,8 @@ def create_app():
     app.config['SECRET_KEY'] = 'secret-key-goes-here'
     # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost:13306/dirty_documents'
     # app.config['SQLALCHEMY_DATABASE_URI'] = 'jdbc:postgresql://localhost:5432/dirty_documents'
-    # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost:5432/dirty_documents'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@postgres:5432/dirty_documents'
+    #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost:5432/dirty_documents'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@database_container:5432/dirty_documents'
 
     db.init_app(app)
 
