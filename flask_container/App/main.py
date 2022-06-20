@@ -37,5 +37,5 @@ def predict():
         # current_app.logger.info(f'Image shape after encoder: {img.shape}')
         img = reverse_process(img, old_shape)
         base64_image = np_to_base64(img)
-        return jsonify(result='Test', denoised_img=base64_image)
+        return jsonify(denoised_img=base64_image)
     return None

@@ -32,12 +32,16 @@ function fileSelectHandler(e) {
 // Web page elements for functions to use
 //========================================================================
 
-var imagePreview = document.getElementById("image-preview");
-var imageDisplay = document.getElementById("image-display");
+//var imagePreview = document.getElementById("image-preview");
+var imageDisplay = document.getElementById("image-preview");
 var uploadCaption = document.getElementById("upload-caption");
 var predResult = document.getElementById("pred-result");
 var loader = document.getElementById("loader");
 var denoisedImage = document.getElementById("denoised-image");
+var fileUpload = document.getElementById("file-upload-box");
+var imagePreviewDiv = document.getElementById("image-preview-div");
+var imageDenoisedDiv = document.getElementById("image-denoised-div");
+var downloadResultButton = document.getElementById("download-result-btn");
 
 //========================================================================
 // Main button events
@@ -52,10 +56,10 @@ function submitImage() {
     return;
   }
 
-  loader.classList.remove("hidden");
+  show(loader)
   imageDisplay.classList.add("loading");
   hide(uploadCaption)
-  hide(imagePreview)
+  //hide(imagePreview)
 
   // call the predict function of the backend
   predictImage(imageDisplay.src);
@@ -66,17 +70,19 @@ function clearImage() {
   fileSelect.value = "";
 
   // remove image sources and hide them
-  imagePreview.src = "";
+  //imagePreview.src = "";
   imageDisplay.src = "";
   denoisedImage.src = "";
-  predResult.innerHTML = "";
 
-  hide(imagePreview);
+  //hide(imagePreview);
   hide(imageDisplay);
   hide(loader);
   hide(denoisedImage);
-  hide(predResult);
+  hide(imagePreviewDiv);
+  hide(imageDenoisedDiv);
+  hide(downloadResultButton);
   show(uploadCaption);
+  show(fileUpload)
 
   imageDisplay.classList.remove("loading");
 }
@@ -92,15 +98,17 @@ function previewFile(file) {
     //imagePreview.src = URL.createObjectURL(file);
 
     // show(imagePreview);
-    hide(imagePreview)
-    hide(uploadCaption);
 
     // reset
-    predResult.innerHTML = "";
+    //predResult.innerHTML = "";
     imageDisplay.classList.remove("loading");
 
-    displayImage(reader.result, "image-display");
+    displayImage(reader.result, "image-preview");
     console.log(reader.result)
+
+    hide(uploadCaption);
+    hide(fileUpload)
+    show(imagePreviewDiv);
   };
 }
 
@@ -139,19 +147,23 @@ function displayResult(data) {
   // display the result
   // imageDisplay.classList.remove("loading");
   hide(loader);
-  predResult.innerHTML = data.result;
+  // predResult.innerHTML = data.result;
   denoisedImage.src = data.denoised_img
+  show(imageDenoisedDiv);
   show(denoisedImage)
-  show(predResult);
+  show(downloadResultButton)
+  //show(predResult);
 }
 
 
 function hide(el) {
   // hide an element
   el.classList.add("hidden");
+  el.classList.add("is-hidden");
 }
 
 function show(el) {
   // show an element
   el.classList.remove("hidden");
+  el.classList.remove("is-hidden");
 }

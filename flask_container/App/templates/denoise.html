@@ -1,36 +1,43 @@
 {% extends "base.html" %} {% block content %}
 
-<div class="main">
-  <div class="title">
-    <h3>Text Denoiser</h3>
-  </div>
-<div class="column is-4 is-offset-4">
-  <div class="box">
-    <input id="file-upload" class="hidden" type="file" accept="image/x-png,image/gif,image/jpeg" />
-    <label for="file-upload" id="file-drag" class="upload-box">
-      <div id="upload-caption">Drop image here or click to select</div>
-      <img id="image-preview" class="hidden" />
-    </label>
+    <div class="main">
+        <div class="title">
+            <h3>Text Denoiser</h3>
+        </div>
+        <div class="column is-4 is-offset-4">
+            <div class="box" id="file-upload-box">
+                <input id="file-upload" class="hidden" type="file" accept="image/x-png,image/gif,image/jpeg"/>
+                <label for="file-upload" id="file-drag" class="upload-box">
+                    <div id="upload-caption">Drop image here or click to select</div>
+                </label>
 
 
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <input type="button" value="Submit" class="button" onclick="submitImage();"/>
+                <input type="button" value="Clear" class="button" onclick="clearImage();"/>
+            </div>
+        </div>
 
-  </div>
-  <div style="margin-bottom: 2rem;">
-    <input type="button" value="Submit" class="button" onclick="submitImage();" />
-    <input type="button" value="Clear" class="button" onclick="clearImage();" />
-  </div>
+        <div class="columns is-2 is-offset-2 ">
+            <div class="column is-hidden" id='image-preview-div'>
+                <p>Preview</p>
+                <img id="image-preview"/>
+            </div>
 
+            <div class="column is-hidden" id='image-denoised-div'>
+                <p>Denoised</p>
+                <svg id="loader" viewBox="0 0 32 32" width="32" height="32">
+                    <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+                </svg>
+                <img id="denoised-image"/>
+            </div>
+        </div>
 
+        <div class =" is-4 is-offset-6 is-hidden" id = "download-result-btn">
+            <button class="download-button"><i class="fa fa-download"></i> Download</button>
+        </div>
 
-  <div id="image">
-    <img id="image-display" />
-    <div id="pred-result" class="hidden"></div>
-    <svg id="loader"  viewBox="0 0 32 32" width="32" height="32">
-      <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
-    </svg>
-      <img id="denoised-image" />
-  </div>
-</div>
-</div>
+    </div>
 
 {% endblock %}
