@@ -68,6 +68,7 @@ function clearImage() {
   // remove image sources and hide them
   imagePreview.src = "";
   imageDisplay.src = "";
+  denoisedImage.src = "";
   predResult.innerHTML = "";
 
   hide(imagePreview);
