@@ -42,7 +42,8 @@ var fileUpload = document.getElementById("file-upload-box");
 var imagePreviewDiv = document.getElementById("image-preview-div");
 var imageDenoisedDiv = document.getElementById("image-denoised-div");
 var downloadResultButton = document.getElementById("download-result-btn");
-
+var recognizedTextBox = document.getElementById("recognized_text_box");
+var recognizedText = document.getElementById("recognized_text");
 //========================================================================
 // Main button events
 //========================================================================
@@ -73,6 +74,7 @@ function clearImage() {
   //imagePreview.src = "";
   imageDisplay.src = "";
   denoisedImage.src = "";
+  recognizedText.innerHTML = "";
 
   //hide(imagePreview);
   hide(imageDisplay);
@@ -81,6 +83,7 @@ function clearImage() {
   hide(imagePreviewDiv);
   hide(imageDenoisedDiv);
   hide(downloadResultButton);
+  hide(recognizedTextBox)
   show(uploadCaption);
   show(fileUpload)
 
@@ -147,11 +150,12 @@ function displayResult(data) {
   // display the result
   // imageDisplay.classList.remove("loading");
   hide(loader);
-  // predResult.innerHTML = data.result;
+  recognizedText.innerHTML = data.recognized_text;
   denoisedImage.src = data.denoised_img
   show(imageDenoisedDiv);
   show(denoisedImage)
   show(downloadResultButton)
+  show(recognizedTextBox)
   //show(predResult);
 }
 

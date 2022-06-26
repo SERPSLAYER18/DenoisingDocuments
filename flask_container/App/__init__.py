@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
+
 from .NN import load_model
 
 # init SQLAlchemy
@@ -9,13 +10,14 @@ db = SQLAlchemy()
 # Classification model
 model = load_model()
 
+
 def create_app():
     app = Flask(__name__)
 
     app.config['SECRET_KEY'] = 'secret-key-goes-here'
     # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost:13306/dirty_documents'
     # app.config['SQLALCHEMY_DATABASE_URI'] = 'jdbc:postgresql://localhost:5432/dirty_documents'
-    #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost:5432/dirty_documents'
+    # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost:5432/dirty_documents'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@database_container:5432/dirty_documents'
 
     db.init_app(app)
@@ -40,4 +42,6 @@ def create_app():
     return app
 
 
-db.create_all(app=create_app())
+app = create_app()
+#db.drop_all(app=app)
+db.create_all(app=app)

@@ -8,7 +8,15 @@ RUN python -m pip install --upgrade pip
 RUN pip3 install tensorflow==2.6.0
 RUN pip3 install keras==2.6
 RUN apt-get update \
-    && apt-get install ffmpeg libsm6 libxext6  -y
+    && apt-get install ffmpeg \libsm6 libxext6  -y
+RUN apt-get install libleptonica-dev \
+                    tesseract-ocr \
+                    libtesseract-dev \
+                    python3-pil \
+                    tesseract-ocr-eng \
+                    tesseract-ocr-script-latn -y
+RUN pip3 install pytesseract
+#RUN pip3 install pytesseract-ocr
 
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt

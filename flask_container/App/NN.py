@@ -25,5 +25,5 @@ def reverse_process(img, shape):
     img = cv2.cvtColor(np.array(img), cv2.COLOR_GRAY2RGB)
     img = cv2.resize(img, tuple(reversed(shape[0:2])))
     img = img * 255
-    img = np.asarray(img, dtype="int32")
+    img = np.asarray(img).astype(np.uint8)
     return img
