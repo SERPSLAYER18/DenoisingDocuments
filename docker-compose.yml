@@ -1,8 +1,16 @@
 version: "3.8"
 services:
-  flask_container :
+  database_container:
+    build: ./database_container/
+  flask_container:
     build: ./flask_container/
     ports:
       - "5000:5000"
-  database_container:
-    build: ./database_container/
+    depends_on:
+      - database_container
+  nginx_proxy:
+    build: ./nginx_proxy/
+    ports:
+      - 8080:80
+    depends_on:
+      - flask_container
