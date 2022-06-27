@@ -17,7 +17,7 @@ class Computation(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     input_image = db.Column(db.String(500000))
     denoised_image = db.Column(db.String(500000))
-    extracted_text = db.Column(db.String(500))
+    extracted_text = db.Column(db.String(5000))
 
     def __repr__(self):
         return f'<Computation "{self.extracted_text[:20]}">'

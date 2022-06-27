@@ -24,6 +24,13 @@ def profile():
                            name=current_user.name,
                            computations_count=computations_count)
 
+@main.route('/history')
+@login_required
+def history():
+    query = Computation.query.filter_by(user_id=current_user.id)
+    return render_template('history.html', query=query)
+
+
 
 @main.route('/denoise')
 @login_required

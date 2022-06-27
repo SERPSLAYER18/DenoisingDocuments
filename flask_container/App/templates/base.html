@@ -44,10 +44,16 @@
                                 Denoise
                             </a>
                         {% endif %}
+                        {% if current_user.is_authenticated %}
+                            <a href="{{ url_for('main.history') }}" class="navbar-item">
+                                History
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
-        </nav>
+    </div>
+    </nav>
     </div>
 
     <div class="hero-body">

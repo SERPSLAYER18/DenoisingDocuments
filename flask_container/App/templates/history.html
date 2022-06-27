@@ -1,0 +1,31 @@
+{% extends "base.html" %} {% block content %}
+    <div class="title">
+        <h3>Computation history</h3>
+    </div>
+    <div class = "container">
+        <table class='table is-stripped is-bordered is-striped is-fullwidth'>
+            <thead>
+            <tr>
+                <th>Input</th>
+                <th>Output</th>
+                <th>Text</th>
+            </tr>
+            <tbody>
+            {% for comp in query %}
+
+                <tr>
+                    <td>
+                        <img src= {{ comp.input_image }}>
+                    </td>
+                    <td>
+                        <img src= {{ comp.denoised_image }}>
+                    </td>
+                    <td>
+                        {{ comp.extracted_text }}
+                    </td>
+                </tr>
+            {% endfor %}
+            <tbody>
+        </table>
+    </div>
+{% endblock %}
