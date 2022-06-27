@@ -24,6 +24,7 @@ RUN pip3 install -r requirements.txt
 #RUN apt-get install python-mysqldb -y
 RUN pip3 install psycopg2-binary
 EXPOSE 5000
+EXPOSE 80
 
 COPY . .
 
