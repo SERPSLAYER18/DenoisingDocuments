@@ -8,9 +8,3 @@ services:
       - "80:5000"
     depends_on:
       - database_container
-#  nginx_proxy:
-#    build: ./nginx_proxy/
-#    ports:
-#      - 8080:80
-#    depends_on:
-#      - flask_container
