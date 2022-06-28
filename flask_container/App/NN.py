@@ -13,8 +13,12 @@ def load_model():
 
 def image_preprocessing(image):
     img = np.asarray(image, dtype="float32")
+    # print(img.shape)
     old_shape = img.shape
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    if len(old_shape) > 3:
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    else:
+        old_shape = (*old_shape,1)
     img = cv2.resize(img, IMAGE_SIZE)
     img = np.reshape(img, IMAGE_SHAPE)
     img = img / 255.0
