@@ -44,7 +44,7 @@ def predict():
     if request.method == 'POST':
         img = base64_to_pil(request.json)
         #print(f'Input image shape: {img.shape}')
-        #current_app.logger.info(f'Input image shape: {img.shape}');
+        #current_app.logger.info(f'Input image shape: {img.shape}')
         img, old_shape = image_preprocessing(img)
         #print(f'After preprocessing: {img.shape}')
         img = model(img[np.newaxis, :])[0]

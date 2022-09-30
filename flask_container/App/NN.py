@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 from tensorflow.keras.models import load_model as load_tf_model
+from flask import  current_app
 
 IMAGE_SIZE = (540, 540)
 IMAGE_SHAPE = (*IMAGE_SIZE, 1)
@@ -13,14 +14,14 @@ def load_model():
 
 def image_preprocessing(image):
     img = np.asarray(image, dtype="float32")
-    # print(img.shape)
+    current_app.logger.info(f'Input image shape: {img.shape}')
     old_shape = img.shape
-    if len(old_shape) > 3:
-        img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    else:
-        old_shape = (*old_shape,1)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    current_app.logger.info(f'Image shape before resize: {img.shape}')
     img = cv2.resize(img, IMAGE_SIZE)
+    current_app.logger.info(f'Image shape after resize: {img.shape}')
     img = np.reshape(img, IMAGE_SHAPE)
+    current_app.logger.info(f'Image shape after reshape: {img.shape}')
     img = img / 255.0
     return img, old_shape
 

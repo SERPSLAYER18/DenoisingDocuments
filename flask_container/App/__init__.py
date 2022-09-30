@@ -1,6 +1,8 @@
 from flask import Flask
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
+from flask import Blueprint, current_app
+import logging
 
 from .NN import load_model
 
@@ -9,6 +11,12 @@ db = SQLAlchemy()
 
 # Classification model
 model = load_model()
+
+
+
+
+logging.basicConfig(level=logging.DEBUG,
+                    format=f'%(asctime)s %(levelname)s %('f'name)s %(threadName)s : %(message)s')
 
 
 def create_app():
