@@ -4,17 +4,17 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import Blueprint, current_app
 import logging
 
+from .NN import load_model
 
 # init SQLAlchemy
 db = SQLAlchemy()
 
 model = None
 
-
-
-
-logging.basicConfig(level=logging.DEBUG,
-                    format=f'%(asctime)s %(levelname)s %('f'name)s %(threadName)s : %(message)s')
+logging.basicConfig(
+    level=logging.DEBUG,
+    format=f'%(asctime)s %(levelname)s %('f'name)s %(threadName)s : %(message)s'
+    )
 
 
 def create_app():
@@ -44,14 +44,13 @@ def create_app():
 
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
+    # db.drop_all(app=app)
+    db.create_all(app=app)
 
     return app
 
 
 if __name__ == '__main__':
-    app = create_app()
-    #db.drop_all(app=app)
-    db.create_all(app=app)
-
-    from .NN import load_model
     model = load_model()
+    app = create_app()
+
