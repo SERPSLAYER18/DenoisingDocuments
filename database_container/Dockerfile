@@ -1,4 +1,4 @@
-FROM postgres:latest
+FROM postgres:14.0
 ENV POSTGRES_PASSWORD=postgres
 ENV POSTGRES_USER=postgres
 ENV POSTGRES_DB=dirty_documents

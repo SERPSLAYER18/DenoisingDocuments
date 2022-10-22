@@ -1,5 +1,6 @@
 keras==2.6
 tensorflow==2.6.0
+keras==2.6
 numpy~=1.19.5
 pandas~=1.3.4
 seaborn~=0.11.2
@@ -16,4 +17,8 @@ imgaug~=0.4.0
 tqdm~=4.62.3
 sklearn
 scikit-learn~=1.0.1
+pytest
+pytesseract
+psycopg2-binary
+
 

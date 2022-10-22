@@ -4,13 +4,11 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import Blueprint, current_app
 import logging
 
-from .NN import load_model
 
 # init SQLAlchemy
 db = SQLAlchemy()
 
-# Classification model
-model = load_model()
+model = None
 
 
 
@@ -50,6 +48,10 @@ def create_app():
     return app
 
 
-app = create_app()
-#db.drop_all(app=app)
-db.create_all(app=app)
+if __name__ == '__main__':
+    app = create_app()
+    #db.drop_all(app=app)
+    db.create_all(app=app)
+
+    from .NN import load_model
+    model = load_model()

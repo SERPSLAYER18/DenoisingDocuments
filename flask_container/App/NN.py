@@ -1,14 +1,14 @@
 import cv2
 import numpy as np
 from tensorflow.keras.models import load_model as load_tf_model
-from flask import  current_app
+from flask import current_app
 
 IMAGE_SIZE = (540, 540)
 IMAGE_SHAPE = (*IMAGE_SIZE, 1)
 
 
-def load_model():
-    autoencoder = load_tf_model('App/static/ConvAutoEncoder')
+def load_model(path='App/static/ConvAutoEncoder'):
+    autoencoder = load_tf_model(path)
     return autoencoder
 
 
