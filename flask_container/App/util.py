@@ -1,12 +1,16 @@
 """Utilities
 """
-import re
 import base64
-
-import numpy as np
+import re
+from io import BytesIO
 
 from PIL import Image
-from io import BytesIO
+from tensorflow.keras.models import load_model as load_tf_model
+
+
+def load_model(path='./App/static/ConvAutoEncoder'):
+    autoencoder = load_tf_model(path)
+    return autoencoder
 
 
 def base64_to_pil(img_base64):

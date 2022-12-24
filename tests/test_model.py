@@ -1,7 +1,10 @@
 import os
 import unittest
+from tensorflow.keras.models import load_model as load_tf_model
+def load_model(path='./App/static/ConvAutoEncoder'):
+    autoencoder = load_tf_model(path)
+    return autoencoder
 
-from flask_container.App.NN import load_model
 
 
 class MyTestCase(unittest.TestCase):
@@ -10,10 +13,10 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(True, True)  # add assertion here
 
     def test_model_existing(self):
-        self.assertTrue(os.path.exists('flask_container/App/static/ConvAutoEncoder/saved_model.pb'))
+        self.assertTrue(os.path.exists('./flask_container/App/static/ConvAutoEncoder/saved_model.pb'))
 
     def test_model_loading(self):
-        model = load_model('flask_container/App/static/ConvAutoEncoder')
+        model = load_model('./flask_container/App/static/ConvAutoEncoder')
 
 
 if __name__ == '__main__':

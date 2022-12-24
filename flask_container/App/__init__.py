@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import Blueprint, current_app
 import logging
 
-from .NN import load_model
+from .util import load_model
 
 # init SQLAlchemy
 db = SQLAlchemy()
