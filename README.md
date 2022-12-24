@@ -1,4 +1,4 @@
-# DenoisingDocuments
+# DenoisingDocuments 📃🧹🔍
 Web-app for denoising of text on images
 
 Web application capable of:
@@ -18,12 +18,12 @@ A non-compressing convolutional autoencoder neural network architecture was used
 `/denoise` - Denoising page \
 `/predict` - Predictions page 
 
-## Tests 
+## Tests: 🔬🧫🧪
 ~~~
 pytest .\tests\
 ~~~
 
-## Installation & deploy:
+## Installation & deploy: 🧑‍💻👟💻
 
 ~~~
 docker-compose up 
