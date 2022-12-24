@@ -20,9 +20,11 @@ def index():
 @login_required
 def profile():
     computations_count = Computation.query.filter_by(user_id=current_user.id).count()
-    return render_template('profile.html',
-                           name=current_user.name,
-                           computations_count=computations_count)
+    return render_template(
+        'profile.html',
+        name=current_user.name,
+        computations_count=computations_count
+        )
 
 
 @main.route('/history')
@@ -43,23 +45,24 @@ def denoise():
 def predict():
     if request.method == 'POST':
         img = base64_to_pil(request.json)
-        #print(f'Input image shape: {img.shape}')
-        #current_app.logger.info(f'Input image shape: {img.shape}')
+        # print(f'Input image shape: {img.shape}')
+        # current_app.logger.info(f'Input image shape: {img.shape}')
         img, old_shape = image_preprocessing(img)
-        #print(f'After preprocessing: {img.shape}')
+        # print(f'After preprocessing: {img.shape}')
         img = model(img[np.newaxis, :])[0]
-        #print(f'Image shape after encoder: {img.shape}')
+        # print(f'Image shape after encoder: {img.shape}')
         img = reverse_process(img, old_shape)
         recognized_text = pytesseract.image_to_string(img)
         base64_image = np_to_base64(img)
 
         # ADD COMPUTATION TO DB
         try:
-            computation = Computation(user_id=current_user.id,
-                                      input_image=request.json,
-                                      denoised_image=base64_image,
-                                      extracted_text=recognized_text
-                                      )
+            computation = Computation(
+                user_id=current_user.id,
+                input_image=request.json,
+                denoised_image=base64_image,
+                extracted_text=recognized_text
+                )
             db.session.add(computation)
             db.session.commit()
         except:

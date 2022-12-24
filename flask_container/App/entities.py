@@ -1,6 +1,7 @@
-from . import db
-from sqlalchemy import String
 from flask_login import UserMixin
+from sqlalchemy import String
+
+from . import db
 
 
 class User(UserMixin, db.Model):

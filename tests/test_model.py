@@ -1,10 +1,12 @@
 import os
 import unittest
+
 from tensorflow.keras.models import load_model as load_tf_model
+
+
 def load_model(path='./App/static/ConvAutoEncoder'):
     autoencoder = load_tf_model(path)
     return autoencoder
-
 
 
 class MyTestCase(unittest.TestCase):
