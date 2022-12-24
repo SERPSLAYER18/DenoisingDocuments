@@ -1,7 +1,7 @@
-import unittest
-from flask_container.App.NN import load_model
-
 import os
+import unittest
+
+from flask_container.App.NN import load_model
 
 
 class MyTestCase(unittest.TestCase):

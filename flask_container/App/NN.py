@@ -7,7 +7,7 @@ IMAGE_SIZE = (540, 540)
 IMAGE_SHAPE = (*IMAGE_SIZE, 1)
 
 
-def load_model(path='App/static/ConvAutoEncoder'):
+def load_model(path='./App/static/ConvAutoEncoder'):
     autoencoder = load_tf_model(path)
     return autoencoder
 
