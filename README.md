@@ -26,6 +26,5 @@ pytest .\tests\
 ## Installation & deploy:
 
 ~~~
-# From root directory
 docker-compose up 
 ~~~
