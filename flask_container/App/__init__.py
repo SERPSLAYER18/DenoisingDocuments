@@ -9,7 +9,7 @@ from .NN import load_model
 # init SQLAlchemy
 db = SQLAlchemy()
 
-model = None
+model = load_model()
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -51,6 +51,6 @@ def create_app():
 
 
 if __name__ == '__main__':
-    model = load_model()
+
     app = create_app()
 

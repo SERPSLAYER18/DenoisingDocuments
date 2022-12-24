@@ -1,6 +1,8 @@
 # DenoisingDocuments 📃🧹🔍
 Web-app for denoising of text on images
 
+![demo_screenshot.png](demo_screenshot.png)
+
 Web application capable of:
 *	Denoising scans of documents by removing artifacts such as fold lines and dirt stains.
 *	Text recognition on denoised images
