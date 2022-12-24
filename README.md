@@ -8,7 +8,7 @@ Web application capable of:
 
 A non-compressing convolutional autoencoder neural network architecture was used for denoising. And pyTesseract package was used for text recognition. Web app powered by Flask framework. SQLAlchemy ORM, Flask Login, PostgreSQL are used to store user data. App was dockerized and deployed or remote machine. 
 
-## Endpoints:
+## Endpoints: 🏠🏛️🏭
 
 `/signup`  - Sign up endpoint \
 `/login`   - Log in endpoint \
